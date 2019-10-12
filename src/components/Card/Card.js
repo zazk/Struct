@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "../../App.css";
 const Card = ({ user }) => {
+  const [show, setShow] = useState(false);
+  const getText = show => (show ? "Hide" : "Show");
+  const hasChildren = user.children.length > 0;
+
   return (
     <div className="Card">
       <div>
@@ -9,11 +13,15 @@ const Card = ({ user }) => {
       </div>
       <div>Manager: {user.manager}</div>
       <div className="children">
-        {user.children.map(u => (
-          <div key={`c-${u.id}`}>
-            <Card user={u} />
+        {hasChildren && (
+          <div>
+            <button onClick={() => setShow(!show)}>
+              {getText(show)} Employees
+            </button>
+            {show &&
+              user.children.map(u => <Card key={`c-${u.id}`} user={u} />)}
           </div>
-        ))}
+        )}
       </div>
     </div>
   );
