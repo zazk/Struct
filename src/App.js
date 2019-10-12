@@ -1,7 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
-import "./App.css";
 import users from "./data/user";
+import Card from "./components/Card";
 
 const getItems = (acc, obj, items, id) => {
   if (obj.manager === id) {
@@ -26,27 +25,13 @@ const getTree = (items, manager) => {
   return mapper;
 };
 
-const Card = ({ user }) => {
-  return (
-    <div>
-      <div>
-        Card Player: {user.first} {user.last}
-      </div>
-      <div>Manager: {user.manager}</div>
-    </div>
-  );
-};
-
-Card.propTypes = {
-  user: PropTypes.object.isRequired
-};
-
 function App() {
-  console.log("TREES", getTree(users, 0));
   return (
     <div className="App">
-      {users.map((user, index) => (
-        <Card key={index} user={user} />
+      {getTree(users, 0).map(user => (
+        <div key={`m-${user.id}`}>
+          <Card user={user}></Card>
+        </div>
       ))}
     </div>
   );
