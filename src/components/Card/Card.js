@@ -14,13 +14,14 @@ const Card = ({ user }) => {
       </h3>
       {user.department && <div>Department: {user.department}</div>}
       {hasChildren && (
-        <div className="children">
-          <div>
-            <button onClick={() => setShow(!show)}>
-              {getText(show)} Employees
-            </button>
+        <div>
+          <button onClick={() => setShow(!show)}>
+            {getText(show)} Employees
+          </button>
+          <div className="children">
+            {show &&
+              user.children.map(u => <Card key={`c-${u.id}`} user={u} />)}
           </div>
-          {show && user.children.map(u => <Card key={`c-${u.id}`} user={u} />)}
         </div>
       )}
     </div>

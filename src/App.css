@@ -2,23 +2,35 @@
   text-align: center;
 }
 
+.App.tree .children {
+  display: flex;
+  flex-direction: row;
+}
+.App.tree .Card {
+  border: none;
+  outline: none;
+  padding: 10px;
+}
+
 .Card {
   border: 10px solid rgb(230, 229, 229);
   padding: 20px;
   margin: 10px 10px 40px 10px;
+  outline-width: 1px;
 }
 
 .Card .Card {
   border: none;
-  outline: 2px solid rgb(110, 110, 110);
+  outline-color: rgb(110, 110, 110);
+  outline-style: solid;
   background: rgb(240, 240, 240);
 }
 .Card .Card .Card {
-  outline: 2px solid rgb(183, 182, 182);
+  outline-color: rgb(183, 182, 182);
   background: rgb(245, 245, 245);
 }
 .Card .Card .Card .Card {
-  outline: 1px solid rgb(225, 223, 223);
+  outline-color: rgb(225, 223, 223);
   background: rgb(253, 253, 253);
 }
 
@@ -32,11 +44,13 @@
   display: flex;
   flex-direction: column;
   padding: 10px;
+  margin: 10px;
 }
 
 button {
   padding: 10px 15px;
   border-radius: 3px;
+  margin: 10px 0;
 }
 .App-link {
   color: #09d3ac;
