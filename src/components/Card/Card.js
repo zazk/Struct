@@ -5,24 +5,24 @@ const Card = ({ user }) => {
   const [show, setShow] = useState(false);
   const getText = show => (show ? "Hide" : "Show");
   const hasChildren = user.children.length > 0;
+  const position = hasChildren ? "Manager" : "Employee";
 
   return (
     <div className="Card">
-      <div>
-        Card Player: {user.first} {user.last}
-      </div>
-      <div>Manager: {user.manager}</div>
-      <div className="children">
-        {hasChildren && (
+      <h3>
+        {position}: {user.first} {user.last}
+      </h3>
+      {user.department && <div>Department: {user.department}</div>}
+      {hasChildren && (
+        <div className="children">
           <div>
             <button onClick={() => setShow(!show)}>
               {getText(show)} Employees
             </button>
-            {show &&
-              user.children.map(u => <Card key={`c-${u.id}`} user={u} />)}
           </div>
-        )}
-      </div>
+          {show && user.children.map(u => <Card key={`c-${u.id}`} user={u} />)}
+        </div>
+      )}
     </div>
   );
 };
