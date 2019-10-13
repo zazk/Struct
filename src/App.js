@@ -6,7 +6,7 @@ function App() {
   const [people, setPeople] = useState([]);
   const [display, setDisplay] = useState("container");
   const getOppositeDisplay = () =>
-    display === "container" ? "tree" : "container";
+    display === "container" ? "tree" : "stacked";
   const handleDisplay = () => setDisplay(getOppositeDisplay());
 
   useEffect(() => {
