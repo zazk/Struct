@@ -4,9 +4,8 @@ import { getTree, getPeople } from "./utils/parsers";
 
 function App() {
   const [people, setPeople] = useState([]);
-  const [display, setDisplay] = useState("container");
-  const getOppositeDisplay = () =>
-    display === "container" ? "tree" : "stacked";
+  const [display, setDisplay] = useState("stacked");
+  const getOppositeDisplay = () => (display === "stacked" ? "tree" : "stacked");
   const handleDisplay = () => setDisplay(getOppositeDisplay());
 
   useEffect(() => {
